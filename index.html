@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abhishek Rajagopalan | Software &amp; AI/ML Engineer</title>
+  <meta name="description" content="Software engineer with four years on HSBC payment systems, now building and evaluating speech and agent systems at the University at Buffalo.">
+  <meta property="og:title" content="Abhishek Rajagopalan | Software &amp; AI/ML Engineer">
+  <meta property="og:description" content="Payment APIs at HSBC. Speech recognition research and agent engineering at UB.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abhiiiinair24.github.io/">
+  <meta name="theme-color" content="#0f5c5c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">Abhishek Rajagopalan</a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#software-engineering">Software Engineering</a></li>
+          <li><a href="#ai-ml">AI / ML</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow">Software engineer · MS CS (AI/ML), University at Buffalo</p>
+        <h1 id="hero-title">Four years on HSBC payment systems. Now fine-tuning and evaluating speech models at UB.</h1>
+        <p class="lede">At HSBC I shipped Java/Spring Boot payment-validation services, led a database migration, and owned on-call and releases. At UB I'm building ClearVox, a recognition, correction, and voice-cloning pipeline for impaired speech, and I report every metric with the evaluation setting behind it.</p>
+
+        <ul class="tracks">
+          <li><a class="track" href="#software-engineering">
+            <span class="track-label">Software Engineering</span>
+            <span class="track-desc">Payment APIs, a MongoDB migration, and a deterministic agent controller</span>
+            <span class="track-arrow" aria-hidden="true">↓</span>
+          </a></li>
+          <li><a class="track" href="#ai-ml">
+            <span class="track-label">AI / ML</span>
+            <span class="track-desc">Whisper fine-tuning on dysarthric speech, held-out evaluation, RAG, deepfake detection</span>
+            <span class="track-arrow" aria-hidden="true">↓</span>
+          </a></li>
+        </ul>
+
+        <ul class="facts" aria-label="At a glance">
+          <li><strong>4 years</strong> production engineering at HSBC</li>
+          <li><strong>22.6%</strong> macro WER, leave-one-speaker-out on TORGO</li>
+          <li><strong>3.96</strong> GPA, graduating Dec 2026</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== SOFTWARE ENGINEERING ===================== -->
+    <section id="software-engineering" class="track-section" aria-labelledby="swe-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Track 1</p>
+          <h2 id="swe-title">Software Engineering</h2>
+          <p>Production backend work on payment systems, and an agent controller where I kept the LLM away from the decisions.</p>
+        </header>
+
+        <article class="case" id="hsbc-payments" aria-labelledby="hsbc-title">
+          <div class="case-head">
+            <h3 id="hsbc-title">Payment validation APIs and data migration at HSBC</h3>
+            <p class="meta">Senior Software Engineer · Mar 2024 – Jul 2025</p>
+            <p class="stack">Java · Spring Boot · REST/GraphQL · MongoDB · Kafka · Cadence · Redis · Jenkins · Docker · Kubernetes · AWS/GCP</p>
+          </div>
+          <div class="case-body">
+            <div class="psr">
+              <h4>Problem</h4>
+              <p>Payment validation sits on the transaction path, so the services behind it need throughput, strict security, and a safe way to recover when a step fails.</p>
+              <h4>What I did</h4>
+              <p>I delivered Java/Spring Boot REST and GraphQL APIs for payment validation, secured with OAuth 2.0, Spring Security, TLS/mTLS, LDAP, and managed certificates. I led the Oracle/PostgreSQL-to-MongoDB migration with geographic sharding and mentored two engineers through implementation and reviews. I added Kafka events, Cadence retries, and Redis caching, deployed through Jenkins, Docker, and Kubernetes on AWS/GCP, and owned on-call diagnosis, release readiness, and rollback coordination.</p>
+            </div>
+            <div class="outcomes">
+              <h4>Outcome</h4>
+              <ul class="metric-list">
+                <li><span class="metric">80%</span> higher throughput on the payment-validation APIs</li>
+                <li><span class="metric">35%</span> higher read/write throughput after the MongoDB migration and sharding</li>
+                <li><span class="metric">800&nbsp;ms</span> p90 for a single-payment API proof of concept in performance testing; the initial prototype was later funded as a separate project</li>
+                <li><span class="metric">30&nbsp;min</span> saved per run by a Node.js/Express/MongoDB reconciliation tool I built, with access controls, scheduled reports, and Mocha tests</li>
+              </ul>
+              <p class="note">Employer work. The code is confidential, so this is a summary.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" id="flight-agent" aria-labelledby="flight-title">
+          <div class="case-head">
+            <h3 id="flight-title">Flight Disruption Recovery Agent</h3>
+            <p class="meta">CSE 510 Agentic Engineering · team project · I owned the agent brain</p>
+            <p class="stack">Python · finite-state machine · LLM intent parsing · simulated tools · evaluation harness</p>
+          </div>
+          <div class="case-body">
+            <div class="psr">
+              <h4>Problem</h4>
+              <p>An agent that replans disrupted flights can't improvise actions with real consequences. It has to stay inside the rules and stop for a human at the right points.</p>
+              <h4>What I did</h4>
+              <p>I built the agent brain as a Python finite-state machine with bounded retries and replanning, explicit approval gates, and rule-based fallbacks. The LLM only parses intent and words messages. Deterministic code controls every transition and validates constraints through local simulated tools, and recommendations never book or pay.</p>
+            </div>
+            <div class="outcomes">
+              <h4>Outcome</h4>
+              <ul class="metric-list">
+                <li><span class="metric">30/30</span> simulated scenarios passed by the integrated team system, with zero violations in the team evaluation harness</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <h3 class="sub-head">More software work</h3>
+        <div class="cards">
+          <article class="card">
+            <h4>Uplifty AI · Software Development Intern</h4>
+            <p class="meta">May – Aug 2026 · React/Next.js · TypeScript · React Native/Expo · Supabase</p>
+            <p>Built messaging, rewards, and onboarding features across web and mobile. Implemented unread tracking with Supabase/PostgreSQL triggers and RPCs, and delivered SQL migrations and Fabric compatibility fixes.</p>
+          </article>
+          <article class="card">
+            <h4>Job Search Automation</h4>
+            <p class="meta">Personal project · Python · REST APIs</p>
+            <p>Built API adapters, ranking, filtering, deduplication, and persistent state for an automated job-search engine. Validated with 312 automated tests.</p>
+            <p class="links"><a href="https://github.com/abhiiiinair24/job-search-automation">View code on GitHub<span class="sr-only"> (Job Search Automation)</span></a></p>
+          </article>
+          <article class="card">
+            <h4>HSBC · Payment and reporting pipelines</h4>
+            <p class="meta">Software Engineer · Aug 2021 – Mar 2024 · Spring Batch · SQL · PySpark · BigQuery</p>
+            <p>Built Spring Batch payment and reporting pipelines and gateway integrations supporting 55% more traffic. Optimized SQL queries and stored procedures across PostgreSQL, Oracle, and MySQL, and built PySpark distribution pipelines and GCS/BigQuery workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AI / ML ===================== -->
+    <section id="ai-ml" class="track-section alt" aria-labelledby="ai-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Track 2</p>
+          <h2 id="ai-title">AI / ML</h2>
+          <p>Applied research where each number comes with its evaluation setting, plus the pipelines and apps that put the models to use.</p>
+        </header>
+
+        <article class="case" id="clearvox" aria-labelledby="clearvox-title">
+          <div class="case-head">
+            <h3 id="clearvox-title">ClearVox: speech recognition for impaired speech</h3>
+            <p class="meta">Student Researcher, University at Buffalo IAD · Aug 2026 – Present · supervised by Prof. Siwei Lyu</p>
+            <p class="stack">PyTorch · Whisper-medium · Flan-T5-small · XTTS-v2 · ECAPA-TDNN · UTMOS · Streamlit · RTX 4090</p>
+          </div>
+          <div class="case-body">
+            <div class="psr">
+              <h4>Problem</h4>
+              <p>Speech recognition trained on typical speech struggles with impaired speech such as dysarthria. ClearVox recognizes it, corrects the transcript, and synthesizes it again with voice cloning.</p>
+              <h4>What I did</h4>
+              <p>I built the recognition, correction, and voice-cloning pipelines. I fine-tuned Whisper-medium on TORGO (8 speakers, 3,246 utterances) and Flan-T5-small on 1,446 correction pairs, and added XTTS-v2 synthesis with a verify-and-retry loop evaluated with ECAPA-TDNN and UTMOS. I deployed a three-page Streamlit research demo on an RTX 4090, using half precision and CPU placement to reduce GPU memory. The project began under the SUNY Research Foundation and continues at UB.</p>
+            </div>
+            <div class="outcomes">
+              <h4>Results and how each was measured</h4>
+              <div class="table-scroll" tabindex="0" role="region" aria-label="ClearVox results table">
+                <table>
+                  <thead>
+                    <tr><th scope="col">Component</th><th scope="col">Result</th><th scope="col">Evaluation setting</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td data-label="Component">Whisper-medium</td><td data-label="Result"><strong>22.6%</strong> macro WER</td><td data-label="Evaluation setting">Leave-one-speaker-out on TORGO (test speaker never seen in training)</td></tr>
+                    <tr><td data-label="Component">Whisper-medium</td><td data-label="Result"><strong>15.8%</strong> WER / <strong>10.6%</strong> CER</td><td data-label="Evaluation setting">Separate evaluation on 622 held-out utterances</td></tr>
+                    <tr><td data-label="Component">Severe-speaker adaptation</td><td data-label="Result">WER <strong>50.5% → 38.0%</strong></td><td data-label="Evaluation setting">One severe speaker, adapted with 71 clips</td></tr>
+                    <tr><td data-label="Component">Flan-T5-small correction</td><td data-label="Result">WER <strong>41.5% → 37.8%</strong></td><td data-label="Evaluation setting">Validation WER after correction</td></tr>
+                    <tr><td data-label="Component">XTTS-v2 synthesis</td><td data-label="Result"><strong>7/8</strong> verified</td><td data-label="Evaluation setting">Test utterances, verify-and-retry</td></tr>
+                    <tr><td data-label="Component">Stuttering check</td><td data-label="Result">Tuned <strong>24.2%</strong> vs stock <strong>20.0%</strong> WER</td><td data-label="Evaluation setting">483 stuttering clips I built from CHAT transcripts; difference 95% CI +3.4 to +5.4 points (interview resampling)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="note">The last row is a negative result, and I report it on purpose: the tuned model did worse than stock on stuttered speech, which revealed a distribution shift that an overall average would hide.</p>
+            </div>
+          </div>
+        </article>
+
+        <h3 class="sub-head">More AI work</h3>
+        <div class="cards">
+          <article class="card">
+            <h4>Agentic RAG Platform for IAD</h4>
+            <p class="meta">Python · FastAPI · LangGraph · ChromaDB · MCP</p>
+            <p>Built a Python/FastAPI prototype for document uploads, ingestion, retrieval, and responses. Integrated Gemini extraction, ChromaDB, LangGraph, text-to-SQL, and a custom MCP server, and evaluated it with RAGAS and LangSmith.</p>
+          </article>
+          <article class="card">
+            <h4>Audio Deepfake Detection</h4>
+            <p class="meta">Deep learning course team project · PyTorch · Wav2Vec2 · Streamlit</p>
+            <p>Benchmarked a CNN, ResNet18, and fine-tuned Wav2Vec2 for detecting synthesized speech. Wav2Vec2 reached 87% accuracy, 0.859 F1, and 93.7% precision on the held-out cross-domain LENS-DF test. Built a Streamlit inference app.</p>
+            <p class="links"><a href="https://github.com/abhiiiinair24/pied-piper-DeepfakeAudio">View code on GitHub<span class="sr-only"> (Audio Deepfake Detection)</span></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="exp-title">Experience</h2>
+        </header>
+        <ol class="timeline">
+          <li>
+            <div class="tl-when">Aug 2026 – Present</div>
+            <div class="tl-what"><strong>Student Researcher</strong>, University at Buffalo, IAD
+              <p>ClearVox speech training, inference, and evaluation pipelines under Prof. Siwei Lyu. <a href="#clearvox">Case study</a></p></div>
+          </li>
+          <li>
+            <div class="tl-when">May – Aug 2026</div>
+            <div class="tl-what"><strong>Software Development Intern</strong>, Uplifty AI
+              <p>Web and mobile features in React/Next.js, TypeScript, and React Native/Expo on Supabase/PostgreSQL.</p></div>
+          </li>
+          <li>
+            <div class="tl-when">Mar 2024 – Jul 2025</div>
+            <div class="tl-what"><strong>Senior Software Engineer</strong>, HSBC
+              <p>Payment-validation APIs, MongoDB migration and sharding, event-driven workflows, on-call. <a href="#hsbc-payments">Case study</a></p></div>
+          </li>
+          <li>
+            <div class="tl-when">Aug 2021 – Mar 2024</div>
+            <div class="tl-what"><strong>Software Engineer</strong>, HSBC
+              <p>Spring Batch payment and reporting pipelines, SQL optimization, Python/SQL production analysis and reconciliation, JUnit/Mockito testing.</p></div>
+          </li>
+          <li>
+            <div class="tl-when">Dec 2019 – Feb 2020</div>
+            <div class="tl-what"><strong>Software Intern</strong>, Zenfotech
+              <p>Python/Django platform supporting cargo transportation by truck.</p></div>
+          </li>
+        </ol>
+
+        <div class="two-col">
+          <div>
+            <h3 class="sub-head">Education</h3>
+            <ul class="plain">
+              <li><strong>M.S. Computer Science, AI/ML Specialization</strong><br>University at Buffalo, SUNY · Aug 2025 – Dec 2026 (expected) · GPA 3.96/4.00</li>
+              <li><strong>B.E. Computer Engineering</strong><br>Pune Institute of Computer Technology, Pune University · Aug 2017 – May 2021 · CGPA 8.07/10</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="sub-head">Tools I use</h3>
+            <dl class="skills">
+              <dt>Languages</dt><dd>Java, Python, SQL, TypeScript/JavaScript</dd>
+              <dt>Backend &amp; data</dt><dd>Spring Boot, FastAPI, Django, Node.js/Express, REST/GraphQL, Kafka, Cadence, Redis, PostgreSQL, MongoDB, Oracle, PySpark, BigQuery</dd>
+              <dt>AI/ML</dt><dd>PyTorch, Transformers, Whisper, Wav2Vec2, Flan-T5, XTTS-v2, LangGraph, MCP, ChromaDB, RAGAS, LangSmith</dd>
+              <dt>Delivery</dt><dd>AWS, GCP, Docker, Kubernetes, Jenkins, GitHub Actions, Datadog, Splunk, Grafana/Prometheus</dd>
+              <dt>Frontend</dt><dd>React, Next.js, React Native/Expo</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Contact</h2>
+        <p>I graduate in December 2026 and I'm open to relocating anywhere in the US. Email is the fastest way to reach me.</p>
+        <ul class="contact-links">
+          <li><a href="mailto:abhishek.nair296@gmail.com">abhishek.nair296@gmail.com</a></li>
+          <li><a href="https://linkedin.com/in/abhisheknair2409">LinkedIn</a></li>
+          <li><a href="https://github.com/abhiiiinair24">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Abhishek Rajagopalan · Buffalo, NY · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+</body>
+</html>
